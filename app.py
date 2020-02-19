@@ -17,6 +17,17 @@ def _index():
 @app.route('/word')
 @cross_origin()
 def _word():
+    try:
+        swear = int(request.args.get('swear'))
+    except:
+        swear = 0
+    if swear == 0:
+        dictionary = words_json
+    if swear == 1:
+        dictionary = words_json + swear_json
+    try:
+        number = int(request.args.get('number'))
+    except:
         number = 1
         all_words = []
         for i in range(0, number):
