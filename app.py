@@ -14,12 +14,6 @@ swear_json = json.loads( open('swear.json', 'r').read() )
 def _index():
     return render_template('index.html')
 
-@app.route('/key')
-def _key():
-    key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
-    db.insert({'key' : key})
-    return key
-
 @app.route('/word')
 @cross_origin()
 def _word():
